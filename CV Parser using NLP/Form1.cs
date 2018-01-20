@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,30 @@ namespace CV_Parser_using_NLP
             InitializeComponent();
         }
 
-        private void educationQualificationTextbox_TextChanged(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
+        {            
+            if (Directory.Exists(cvDirectoryTextbox.Text)) {
+                Console.WriteLine("Check. Ok.");
+            }
+            else MessageBox.Show("Dir doesn't exist");
+        }
+
+        private void BrowseButton_Click(object sender, EventArgs e)
         {
-            educationQualificationTextbox.Text = "";
+            try
+            {
+                string folderPath = "";
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    folderPath = folderBrowserDialog.SelectedPath;
+                }
+                cvDirectoryTextbox.Text = folderPath;
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
