@@ -1,6 +1,7 @@
 ﻿using CV_Parser_using_NLP.Dependency;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CV_Parser_using_NLP
@@ -10,19 +11,14 @@ namespace CV_Parser_using_NLP
         public CVForm()
         {
             InitializeComponent();
-            bool isPythonInstalled = Software.CheckSoftwareInstalled("Python 3.6");
-            bool isRubyInstalled = Software.CheckSoftwareInstalled("Ruby 2.4.3");
+            Enabled = false;
+            Helper helper = new Helper();
+            helper.InitializeDependencies(InitProgressBar, this);
 
-            if (!isRubyInstalled)
-                MessageBox.Show("We did not find Ruby in your computer. Ruby is requred to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
-
-            if (!isPythonInstalled)
-                MessageBox.Show("We did not find Python in your computer. Python is requred to run this software. Please install Python 3.6 or greater from a web browser.");
-
-            if (isPythonInstalled && isRubyInstalled) {
-                Library.InstallGemAnemone("anemone");
-                Library.InstallLibraryNLTK("NLTK");
-            }
+            /*var result = MessageBox.Show("This program requires installation of Python, Ruby and their dependencies. By pressing OK you agree to automatic installation of these dependencies.");
+            if (result == DialogResult.OK){
+                helper.InitializeDependencies(InitProgressBar, this);
+            }*/
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -30,7 +26,7 @@ namespace CV_Parser_using_NLP
             if (Directory.Exists(cvDirectoryTextbox.Text)) {
                 
             }
-            else MessageBox.Show("Dir doesn't exist"); 
+            else MessageBox.Show("Dir doesn't exist");
         }       
 
         private void BrowseButton_Click(object sender, EventArgs e)
@@ -48,6 +44,7 @@ namespace CV_Parser_using_NLP
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }      
-        }       
+        }
+
     }
 }

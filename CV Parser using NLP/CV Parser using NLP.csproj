@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Dependency\Library.cs" />
     <Compile Include="Dependency\Software.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CVForm.resx">

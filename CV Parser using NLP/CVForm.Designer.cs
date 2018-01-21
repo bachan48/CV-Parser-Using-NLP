@@ -49,6 +49,7 @@
             this.matchingCVTable = new System.Windows.Forms.DataGridView();
             this.cvRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cvTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InitProgressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.matchingCVTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -278,7 +279,7 @@
             this.matchingCVTable.Name = "matchingCVTable";
             this.matchingCVTable.RowHeadersVisible = false;
             this.matchingCVTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.matchingCVTable.Size = new System.Drawing.Size(468, 617);
+            this.matchingCVTable.Size = new System.Drawing.Size(457, 617);
             this.matchingCVTable.TabIndex = 19;
             // 
             // cvRank
@@ -291,7 +292,19 @@
             // 
             this.cvTitle.HeaderText = "CV Title";
             this.cvTitle.Name = "cvTitle";
-            this.cvTitle.Width = 180;
+            this.cvTitle.Width = 175;
+            // 
+            // InitProgressBar
+            // 
+            this.InitProgressBar.Location = new System.Drawing.Point(494, 499);
+            this.InitProgressBar.MarqueeAnimationSpeed = 20;
+            this.InitProgressBar.Name = "InitProgressBar";
+            this.InitProgressBar.Size = new System.Drawing.Size(519, 42);
+            this.InitProgressBar.Step = 0;
+            this.InitProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.InitProgressBar.TabIndex = 20;
+            this.InitProgressBar.UseWaitCursor = true;
+            this.InitProgressBar.Value = 10;
             // 
             // CVForm
             // 
@@ -299,6 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(1518, 902);
+            this.Controls.Add(this.InitProgressBar);
             this.Controls.Add(this.matchingCVTable);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.BrowseButton);
@@ -323,6 +337,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CVForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CV Parser";
             ((System.ComponentModel.ISupportInitialize)(this.matchingCVTable)).EndInit();
             this.ResumeLayout(false);
@@ -353,6 +368,7 @@
         private System.Windows.Forms.DataGridView matchingCVTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn cvRank;
         private System.Windows.Forms.DataGridViewTextBoxColumn cvTitle;
+        private System.Windows.Forms.ProgressBar InitProgressBar;
     }
 }
 

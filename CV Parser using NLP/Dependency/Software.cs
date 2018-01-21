@@ -10,6 +10,32 @@ namespace CV_Parser_using_NLP.Dependency
 {
     public class Software
     {
+        public static bool InitializeDependencies()
+        {            
+            bool isPythonInstalled = Software.CheckSoftwareInstalled("Python 3.6");
+            bool isRubyInstalled = Software.CheckSoftwareInstalled("Ruby 2.4.3");           
+
+            if (!isPythonInstalled)
+            {
+                MessageBox.Show("We did not find Python in your computer. Python is requred to run this software. Please install Python 3.6 or greater from a web browser.");
+                return false;
+            }
+            if (!isRubyInstalled)
+            {
+                MessageBox.Show("We did not find Ruby in your computer. Ruby is requred to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
+                return false;
+            }
+            if (isPythonInstalled && isRubyInstalled)
+            {
+                /*await Task.Run(()=> (Library.InstallGemAnemone("anemone")));
+                await Task.Run(() => (Library.InstallLibraryNLTK("NLTK")));*/
+                Library.InstallGemAnemone("anemone");
+                Library.InstallLibraryNLTK("NLTK");
+                var dialogResult = MessageBox.Show("Thank you for your patience, we're good to go!");
+                return true;
+            }
+            return false;
+        }
         public static bool CheckSoftwareInstalled(string softwareName)
         {
             bool isSotwareInstalledLocal = IsSoftwareInstalledLocalMachine(softwareName);
