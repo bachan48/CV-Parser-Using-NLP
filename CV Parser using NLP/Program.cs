@@ -16,7 +16,7 @@ namespace CV_Parser_using_NLP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form());
+            Application.Run(new CVForm());
         }
     }
 }
