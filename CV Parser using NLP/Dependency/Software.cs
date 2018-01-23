@@ -17,12 +17,12 @@ namespace CV_Parser_using_NLP.Dependency
 
             if (!isPythonInstalled)
             {
-                MessageBox.Show("We did not find Python in your computer. Python is requred to run this software. Please install Python 3.6 or greater from a web browser.");
+                MessageBox.Show("We did not find Python in your computer. Python is required to run this software. Please install Python 3.6 or greater from a web browser.");
                 return false;
             }
             if (!isRubyInstalled)
             {
-                MessageBox.Show("We did not find Ruby in your computer. Ruby is requred to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
+                MessageBox.Show("We did not find Ruby in your computer. Ruby is required to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
                 return false;
             }
             if (isPythonInstalled && isRubyInstalled)
