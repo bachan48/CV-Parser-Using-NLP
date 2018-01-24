@@ -26,7 +26,7 @@ namespace CV_Parser_using_NLP.Dependency
             cmd.StartInfo.FileName = "cmd.exe";
             cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             cmd.StartInfo.Verb = "runas";
-            cmd.StartInfo.Arguments = @"/c py -m pip install nltk";
+            cmd.StartInfo.Arguments = @"/c py -m pip install nltk && py -m pip install pypdf2";
             cmd.Start();
             cmd.WaitForExit();
             return true;

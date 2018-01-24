@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace CV_Parser_using_NLP
 {
     class Helper
-    {        
+    {
         public static async void InitializeDependencies(Panel panel, Form form)
         {
             var result = await Task.Run(() => (Software.InitializeDependencies()));
@@ -31,29 +31,11 @@ namespace CV_Parser_using_NLP
                 Application.Exit();
             }
         }
-
-        public static void InitializeTrainingData()
-        {
-            List<Object> SkillDictionary = new List<Object>();
-            List<Object> ExperienceDictionary = new List<Object>();
-            List<Object> EducationDictionary = new List<Object>();
-            AddData(SkillDictionary, "skills");
-            AddData(ExperienceDictionary, "experience");
-            AddData(EducationDictionary, "education");
-
-            RequirementData data = new RequirementData(SkillDictionary, ExperienceDictionary, EducationDictionary);
-        }
-
-        public static void InitializeRequirementData()
-        {
-
-        }
-
-        public static bool AddData(List<Object> Dictionary, string file)
+        
+        public static bool AddDataFromResource(List<Object> Dictionary, string file)
         {
             try
             {
-
                 var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = "CV_Parser_using_NLP.Data.DataSet."+file+".txt";
 

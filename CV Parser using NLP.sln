@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV Parser using NLP", "CV Parser using NLP\CV Parser using NLP.csproj", "{6F029813-2B6C-4EE7-A4F7-EF9C21C856E4}"
 EndProject

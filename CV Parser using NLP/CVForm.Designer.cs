@@ -37,7 +37,7 @@
             this.jobTitleLabel = new System.Windows.Forms.Label();
             this.educationalQualificationLabel = new System.Windows.Forms.Label();
             this.skillsLabel = new System.Windows.Forms.Label();
-            this.educationLabel = new System.Windows.Forms.Label();
+            this.experienceLabel = new System.Windows.Forms.Label();
             this.cvDirectoryLabel = new System.Windows.Forms.Label();
             this.jobTitleTextbox = new System.Windows.Forms.TextBox();
             this.educationQualificationTextbox = new System.Windows.Forms.TextBox();
@@ -142,9 +142,9 @@
             this.educationalQualificationLabel.Location = new System.Drawing.Point(70, 387);
             this.educationalQualificationLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.educationalQualificationLabel.Name = "educationalQualificationLabel";
-            this.educationalQualificationLabel.Size = new System.Drawing.Size(578, 33);
+            this.educationalQualificationLabel.Size = new System.Drawing.Size(611, 33);
             this.educationalQualificationLabel.TabIndex = 8;
-            this.educationalQualificationLabel.Text = "Educational Qualification (subject Major Only)";
+            this.educationalQualificationLabel.Text = "Educational Qualification (Seperate with comma)";
             // 
             // skillsLabel
             // 
@@ -154,21 +154,21 @@
             this.skillsLabel.Location = new System.Drawing.Point(70, 508);
             this.skillsLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.skillsLabel.Name = "skillsLabel";
-            this.skillsLabel.Size = new System.Drawing.Size(381, 33);
+            this.skillsLabel.Size = new System.Drawing.Size(367, 33);
             this.skillsLabel.TabIndex = 9;
-            this.skillsLabel.Text = "Skills (Seperate with Commas)";
+            this.skillsLabel.Text = "Skills (Seperate with comma)";
             // 
-            // educationLabel
+            // experienceLabel
             // 
-            this.educationLabel.AutoSize = true;
-            this.educationLabel.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.educationLabel.ForeColor = System.Drawing.Color.White;
-            this.educationLabel.Location = new System.Drawing.Point(70, 635);
-            this.educationLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.educationLabel.Name = "educationLabel";
-            this.educationLabel.Size = new System.Drawing.Size(323, 33);
-            this.educationLabel.TabIndex = 10;
-            this.educationLabel.Text = "Experience (Field, Years)";
+            this.experienceLabel.AutoSize = true;
+            this.experienceLabel.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.experienceLabel.ForeColor = System.Drawing.Color.White;
+            this.experienceLabel.Location = new System.Drawing.Point(70, 635);
+            this.experienceLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.experienceLabel.Name = "experienceLabel";
+            this.experienceLabel.Size = new System.Drawing.Size(392, 33);
+            this.experienceLabel.TabIndex = 10;
+            this.experienceLabel.Text = "Experience (Seperated by line)";
             // 
             // cvDirectoryLabel
             // 
@@ -218,10 +218,11 @@
             // 
             this.experienceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.experienceTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
-            this.experienceTextBox.Location = new System.Drawing.Point(76, 700);
+            this.experienceTextBox.Location = new System.Drawing.Point(76, 674);
             this.experienceTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.experienceTextBox.Multiline = true;
             this.experienceTextBox.Name = "experienceTextBox";
-            this.experienceTextBox.Size = new System.Drawing.Size(488, 31);
+            this.experienceTextBox.Size = new System.Drawing.Size(488, 85);
             this.experienceTextBox.TabIndex = 15;
             this.experienceTextBox.Text = "Example: Programming, 3";
             // 
@@ -315,7 +316,7 @@
             this.LoadingPanel.Controls.Add(this.WaitLabel);
             this.LoadingPanel.Controls.Add(this.InitProgressBar);
             this.LoadingPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LoadingPanel.Location = new System.Drawing.Point(-7, 295);
+            this.LoadingPanel.Location = new System.Drawing.Point(2, 320);
             this.LoadingPanel.Name = "LoadingPanel";
             this.LoadingPanel.Size = new System.Drawing.Size(1525, 304);
             this.LoadingPanel.TabIndex = 21;
@@ -324,7 +325,7 @@
             // 
             this.WaitLabel.AutoSize = true;
             this.WaitLabel.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WaitLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.WaitLabel.ForeColor = System.Drawing.Color.White;
             this.WaitLabel.Location = new System.Drawing.Point(351, 77);
             this.WaitLabel.Name = "WaitLabel";
             this.WaitLabel.Size = new System.Drawing.Size(879, 49);
@@ -347,7 +348,7 @@
             this.Controls.Add(this.educationQualificationTextbox);
             this.Controls.Add(this.jobTitleTextbox);
             this.Controls.Add(this.cvDirectoryLabel);
-            this.Controls.Add(this.educationLabel);
+            this.Controls.Add(this.experienceLabel);
             this.Controls.Add(this.skillsLabel);
             this.Controls.Add(this.educationalQualificationLabel);
             this.Controls.Add(this.jobTitleLabel);
@@ -383,7 +384,7 @@
         private System.Windows.Forms.Label jobTitleLabel;
         private System.Windows.Forms.Label educationalQualificationLabel;
         private System.Windows.Forms.Label skillsLabel;
-        private System.Windows.Forms.Label educationLabel;
+        private System.Windows.Forms.Label experienceLabel;
         private System.Windows.Forms.Label cvDirectoryLabel;
         private System.Windows.Forms.TextBox jobTitleTextbox;
         private System.Windows.Forms.TextBox educationQualificationTextbox;

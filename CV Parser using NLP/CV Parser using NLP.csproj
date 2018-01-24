@@ -74,8 +74,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include=".gitignore" />
-    <None Include="Dependency\Script\anemoneTest.rb" />
     <EmbeddedResource Include="Dependency\Script\skillCrawler.rb" />
+    <EmbeddedResource Include="Dependency\Script\pdf_to_textfile.py" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,11 +89,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Data\DataSet\education.txt" />
     <EmbeddedResource Include="Data\DataSet\experience.txt" />
     <EmbeddedResource Include="Data\DataSet\skills.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dependency\Script\InstallPyLibrary.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
