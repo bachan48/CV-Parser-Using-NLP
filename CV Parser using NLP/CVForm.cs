@@ -1,5 +1,6 @@
 ﻿using CV_Parser_using_NLP.Dependency;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,43 +9,70 @@ namespace CV_Parser_using_NLP
 {
     public partial class CVForm : Form
     {
+        string directory;
+        bool updateData = false;
         public CVForm()
         {
             InitializeComponent();
             Enabled = false;
-            Helper helper = new Helper();
-            helper.InitializeDependencies(InitProgressBar, this);
-
-            /*var result = MessageBox.Show("This program requires installation of Python, Ruby and their dependencies. By pressing OK you agree to automatic installation of these dependencies.");
-            if (result == DialogResult.OK){
-                helper.InitializeDependencies(InitProgressBar, this);
-            }*/
+            Helper.InitializeDependencies(LoadingPanel, this);     
+            if (updateData)
+            {
+                Helper.UpdateData();
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+
             if (Directory.Exists(cvDirectoryTextbox.Text)) {
+
+                DirectoryInfo dir = new DirectoryInfo(directory);
+                FileInfo[] PDFFiles = dir.GetFiles("*.pdf");
                 
+                if (!(PDFFiles.Length == 0))
+                { 
+
+
+                                    /*****************/
+                    /************/CVParserUsingNLP(PDFFiles);/**************?
+                                    /*****************/
+
+
+                }
+
+                else if (PDFFiles.Length == 0)
+                {
+                    Helper.ShowError("No CVs found in the directory. Please make sure all CVs are in .PDF format ");
+                }
+
+                else {
+                    Helper.ShowError("There was an unexpected error. Please try again.");
+                }
+
             }
-            else MessageBox.Show("Dir doesn't exist");
-        }       
+            else Helper.ShowError("Directory doesn't exist.");
+        }
 
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             try
             {
-                string folderPath = "";
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    folderPath = folderBrowserDialog.SelectedPath;
+                    directory = folderBrowserDialog.SelectedPath;
                 }
-                cvDirectoryTextbox.Text = folderPath;
+                cvDirectoryTextbox.Text = directory;
             }
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }      
         }
 
+        private void CVParserUsingNLP(FileInfo[] PDFFiles)
+        {
+
+        }
     }
 }

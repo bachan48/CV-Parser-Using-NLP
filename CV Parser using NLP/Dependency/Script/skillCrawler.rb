@@ -8,7 +8,7 @@ word_char_mapper = {
 urls, urls_skipped = [], []
 word_char_mapper.each{ |char, count| 1.upto(count) { |num| urls << "https://www.linkedin.com/directory/topics-#{char}-#{num}/" } }
 
-File.open('../../Data/skills.txt', 'w') do |file|
+File.open('../../Data/DataSet/skills.txt', 'w') do |file|
     urls.each do |url|
       puts "Processing #{url}"
       begin

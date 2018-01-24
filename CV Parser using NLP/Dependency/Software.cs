@@ -17,12 +17,12 @@ namespace CV_Parser_using_NLP.Dependency
 
             if (!isPythonInstalled)
             {
-                MessageBox.Show("We did not find Python in your computer. Python is required to run this software. Please install Python 3.6 or greater from a web browser.");
+                Helper.ShowError("We did not find Python in your computer. Python is required to run this software. Please install Python 3.6 or greater from a web browser.");
                 return false;
             }
             if (!isRubyInstalled)
             {
-                MessageBox.Show("We did not find Ruby in your computer. Ruby is required to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
+                Helper.ShowError("We did not find Ruby in your computer. Ruby is required to run this software. Please install Ruby 2.4.3 or greater from a web browser.");
                 return false;
             }
             if (isPythonInstalled && isRubyInstalled)
@@ -31,7 +31,7 @@ namespace CV_Parser_using_NLP.Dependency
                 await Task.Run(() => (Library.InstallLibraryNLTK("NLTK")));*/
                 Library.InstallGemAnemone("anemone");
                 Library.InstallLibraryNLTK("NLTK");
-                var dialogResult = MessageBox.Show("Thank you for your patience, we're good to go!");
+                Helper.ShowInformation("Thank you for your patience, we're good to go!");
                 return true;
             }
             return false;
@@ -67,7 +67,7 @@ namespace CV_Parser_using_NLP.Dependency
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Helper.ShowError(ex.Message);
                 return false;
             }
         }
@@ -90,7 +90,7 @@ namespace CV_Parser_using_NLP.Dependency
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Helper.ShowError(ex.Message);
                 return false;
             }
         }

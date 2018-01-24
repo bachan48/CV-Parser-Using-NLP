@@ -51,8 +51,13 @@
     <Compile Include="CVForm.Designer.cs">
       <DependentUpon>CVForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\CVData.cs" />
+    <Compile Include="Data\RequirementData.cs" />
     <Compile Include="Dependency\Library.cs" />
     <Compile Include="Dependency\Software.cs" />
+    <Compile Include="Engine\CV.cs" />
+    <Compile Include="Engine\Parser.cs" />
+    <Compile Include="Data\TrainingData.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,7 +75,7 @@
     </Compile>
     <None Include=".gitignore" />
     <None Include="Dependency\Script\anemoneTest.rb" />
-    <None Include="Dependency\Script\skillCrawler.rb" />
+    <EmbeddedResource Include="Dependency\Script\skillCrawler.rb" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,7 +91,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\skills.txt" />
+    <EmbeddedResource Include="Data\DataSet\education.txt" />
+    <EmbeddedResource Include="Data\DataSet\experience.txt" />
+    <EmbeddedResource Include="Data\DataSet\skills.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

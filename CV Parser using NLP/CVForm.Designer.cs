@@ -50,7 +50,10 @@
             this.cvRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cvTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InitProgressBar = new System.Windows.Forms.ProgressBar();
+            this.LoadingPanel = new System.Windows.Forms.Panel();
+            this.WaitLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.matchingCVTable)).BeginInit();
+            this.LoadingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -296,7 +299,7 @@
             // 
             // InitProgressBar
             // 
-            this.InitProgressBar.Location = new System.Drawing.Point(494, 499);
+            this.InitProgressBar.Location = new System.Drawing.Point(513, 185);
             this.InitProgressBar.MarqueeAnimationSpeed = 20;
             this.InitProgressBar.Name = "InitProgressBar";
             this.InitProgressBar.Size = new System.Drawing.Size(519, 42);
@@ -306,13 +309,35 @@
             this.InitProgressBar.UseWaitCursor = true;
             this.InitProgressBar.Value = 10;
             // 
+            // LoadingPanel
+            // 
+            this.LoadingPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.LoadingPanel.Controls.Add(this.WaitLabel);
+            this.LoadingPanel.Controls.Add(this.InitProgressBar);
+            this.LoadingPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LoadingPanel.Location = new System.Drawing.Point(-7, 295);
+            this.LoadingPanel.Name = "LoadingPanel";
+            this.LoadingPanel.Size = new System.Drawing.Size(1525, 304);
+            this.LoadingPanel.TabIndex = 21;
+            // 
+            // WaitLabel
+            // 
+            this.WaitLabel.AutoSize = true;
+            this.WaitLabel.Font = new System.Drawing.Font("Arial", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WaitLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.WaitLabel.Location = new System.Drawing.Point(351, 77);
+            this.WaitLabel.Name = "WaitLabel";
+            this.WaitLabel.Size = new System.Drawing.Size(879, 49);
+            this.WaitLabel.TabIndex = 21;
+            this.WaitLabel.Text = "Please wait while we get things ready for you";
+            // 
             // CVForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1518, 902);
-            this.Controls.Add(this.InitProgressBar);
+            this.Controls.Add(this.LoadingPanel);
             this.Controls.Add(this.matchingCVTable);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.BrowseButton);
@@ -340,6 +365,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CV Parser";
             ((System.ComponentModel.ISupportInitialize)(this.matchingCVTable)).EndInit();
+            this.LoadingPanel.ResumeLayout(false);
+            this.LoadingPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,6 +396,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cvRank;
         private System.Windows.Forms.DataGridViewTextBoxColumn cvTitle;
         private System.Windows.Forms.ProgressBar InitProgressBar;
+        private System.Windows.Forms.Panel LoadingPanel;
+        private System.Windows.Forms.Label WaitLabel;
     }
 }
 

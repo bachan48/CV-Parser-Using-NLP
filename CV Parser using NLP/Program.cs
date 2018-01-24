@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CV_Parser_using_NLP.Data;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +20,12 @@ namespace CV_Parser_using_NLP
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new CVForm());
+                Helper.InitializeTrainingData();                
+                Application.Run(new CVForm());                
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Helper.ShowError(ex.Message);
             }
            
         }
