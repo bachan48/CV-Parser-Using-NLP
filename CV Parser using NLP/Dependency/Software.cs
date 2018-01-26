@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,8 +14,8 @@ namespace CV_Parser_using_NLP.Dependency
     {
         public static bool InitializeDependencies()
         {            
-            bool isPythonInstalled = Software.CheckSoftwareInstalled("Python 3.6");
-            bool isRubyInstalled = Software.CheckSoftwareInstalled("Ruby 2.4.3");           
+            bool isPythonInstalled = Software.CheckSoftwareInstalled("Python");
+            bool isRubyInstalled = Software.CheckSoftwareInstalled("Ruby");           
 
             if (!isPythonInstalled)
             {
@@ -26,13 +28,31 @@ namespace CV_Parser_using_NLP.Dependency
                 return false;
             }
             if (isPythonInstalled && isRubyInstalled)
-            {
-                /*await Task.Run(()=> (Library.InstallGemAnemone("anemone")));
-                await Task.Run(() => (Library.InstallLibraryNLTK("NLTK")));*/
-                Library.InstallGemAnemone("anemone");
-                Library.InstallLibraryNLTK("NLTK");
-                Helper.ShowInformation("Thank you for your patience, we're good to go!");
-                return true;
+            {               
+                try
+                {
+                    var assembly = Assembly.GetExecutingAssembly();
+
+                    var resourceName1 = "CV_Parser_using_NLP.Dependency.Script.InstallPyLibrary.py";
+                    byte[] file1 = ResourceHelper.GetEmbeddedResourceAsBytes(resourceName1);
+                    File.WriteAllBytes(@"C:\Windows\Temp\InstallPyLibrary.py", file1);
+
+                    var resourceName2 = "CV_Parser_using_NLP.Dependency.Script.pdf_to_textfile.py";
+                    byte[] file2 = ResourceHelper.GetEmbeddedResourceAsBytes(resourceName2);
+                    File.WriteAllBytes(@"C:\Windows\Temp\pdf_to_textfile.py", file2);
+
+                    Library.InstallGemAnemone("anemone");
+                    Library.InstallLibraryNLTK("NLTK");
+                    Library.InstallPyLibrary(@"C:\Windows\Temp\InstallPyLibrary.py");
+
+                    Helper.ShowInformation("Thank you for your patience, we're good to go!");
+                    return true;
+                }
+                catch
+                {
+                    Helper.ShowError("Error accessing resources!");
+                    Application.Exit();                    
+                }               
             }
             return false;
         }
@@ -60,10 +80,9 @@ namespace CV_Parser_using_NLP.Dependency
                     return false;
 
                 return LocalMachineKey.GetSubKeyNames()
-                       .Select(keyName => LocalMachineKey.OpenSubKey(keyName))
-                       .Select(subkey => subkey.GetValue("DisplayName") as string)
-                       .Any(displayName => displayName != null && displayName.Contains(softwareName));
-
+                        .Select(keyName => LocalMachineKey.OpenSubKey(keyName))
+                        .Select(subkey => subkey.GetValue("DisplayName") as string)
+                        .Any(displayName => displayName != null && displayName.Contains(softwareName));
             }
             catch (Exception ex)
             {
@@ -82,7 +101,7 @@ namespace CV_Parser_using_NLP.Dependency
 
                 if (CurrentUserKey == null)
                     return false;
-
+                
                 return CurrentUserKey.GetSubKeyNames()
                     .Select(keyName => CurrentUserKey.OpenSubKey(keyName))
                     .Select(subkey => subkey.GetValue("DisplayName") as string)

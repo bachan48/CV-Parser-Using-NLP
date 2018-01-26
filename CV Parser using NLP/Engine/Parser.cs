@@ -45,13 +45,11 @@ namespace CV_Parser_using_NLP.Engine
             List<string> educationList = education.Split(new char[] { ',' }).ToList();
             List<string> experienceList = experience.Split(new char[] { '\n' }).ToList();
             CVdata = new CVData(skillsList, educationList, experienceList);
-        }
+        }      
 
-        public static void GetPDFFiles()
+        public void GetPDFFiles()
         {
-
+            Helper.GetPDFFilesPython(Directory);
         }
-
-
     }
 }

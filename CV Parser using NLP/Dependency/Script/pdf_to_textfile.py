@@ -6,16 +6,12 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import PyPDF2
 
-from time import strftime
-
 
 def convertToText(pathToFile):
-    folder = pathToFile
+    directory = pathToFile
 
 
     list=[]
-
-    directory=folder
 
     for root,dirs,files in os.walk(directory):
 
@@ -28,33 +24,30 @@ def convertToText(pathToFile):
                 list.append(t)
 
 
-    tempdir = directory+"/temp"
+    tempdir = "C:/Windows/Temp/temp/"
 
-
-    for item in list: #loop for sabbai file
+    count = 1
+    for filepathtoitem in list: #loop for sabbai file
         if not os.path.exists(tempdir):
             os.makedirs(tempdir)
-        path=item
 
-        head,tail=os.path.split(path)
-
-        
+        total = os.path.basename(filepathtoitem)
+        head,tail=os.path.split(total)
 
        
 
         tail=tail.replace(".pdf",".txt")
 
-        name=filename+tail
+        name=head+tail
 
         content = ""
 
         
 
-        pdf = PyPDF2.PdfFileReader(path, "rb")
+        pdf = PyPDF2.PdfFileReader(filepathtoitem, "rb")
 
         stop_words = set(stopwords.words("english"))
         table = str.maketrans({key: None for key in string.punctuation})
-
 
         for i in range(0, pdf.getNumPages()):
 
@@ -74,10 +67,11 @@ def convertToText(pathToFile):
                 filtered_sentence.append(w)
 
         final_string = ','.join(filtered_sentence)
-        print("Converting! Will be converted shortly")
-        print (tempdir)
-        with open(tempdir+"/"+name,'w') as out:
+        print("Converting "+str(count)+"! Will be converted shortly")
+        with open(tempdir+name,'w') as out:
             out.write(final_string)
             out.close()
+        count += 1
+    print("All Done")        
 
 convertToText(sys.argv[1])

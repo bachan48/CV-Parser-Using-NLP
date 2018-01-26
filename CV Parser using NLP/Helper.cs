@@ -1,7 +1,9 @@
 ﻿using CV_Parser_using_NLP.Data;
 using CV_Parser_using_NLP.Dependency;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -59,6 +61,16 @@ namespace CV_Parser_using_NLP
             }
         }
 
+        public static void GetPDFFilesPython(string directory)
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            cmd.StartInfo.Arguments = @"/c py C:\Windows\Temp\pdf_to_textfile.py " + directory;
+            cmd.Start();
+            cmd.WaitForExit();
+        }
+
         public static bool CheckForInternetConnection()
         {
             try
@@ -91,5 +103,6 @@ namespace CV_Parser_using_NLP
         {
             return false;
         }
+
     }
 }

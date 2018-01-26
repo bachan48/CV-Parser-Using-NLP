@@ -14,6 +14,7 @@ namespace CV_Parser_using_NLP
     public partial class CVForm : Form
     {
         string directory;
+        Parser parser;
         bool updateData = false;
         public CVForm()
         {
@@ -38,7 +39,7 @@ namespace CV_Parser_using_NLP
             }
             else Helper.ShowError("All fields are required.");
 
-            if (Directory.Exists(cvDirectoryTextbox.Text)) {
+            if (Directory.Exists(directory)) {
 
                 DirectoryInfo dir = new DirectoryInfo(directory);
                 FileInfo[] PDFFiles = dir.GetFiles("*.pdf");
@@ -53,16 +54,10 @@ namespace CV_Parser_using_NLP
 
 
                 }
-
-                else if (PDFFiles.Length == 0)
+                if (PDFFiles.Length == 0)
                 {
                     Helper.ShowError("No CVs found in the directory. Please make sure all CVs are in .PDF format ");
-                }
-
-                else {
-                    Helper.ShowError("There was an unexpected error. Please try again.");
-                }
-
+                }  
             }
             else Helper.ShowError("Directory doesn't exist.");
         }
@@ -75,21 +70,19 @@ namespace CV_Parser_using_NLP
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     directory = folderBrowserDialog.SelectedPath;
+                    parser = new Parser(directory);
                 }
                 cvDirectoryTextbox.Text = directory;
             }
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                Parser parser = new Parser(directory);
-            }
+            }            
         }
 
         private void CVParserUsingNLP()
         {
-            Parser.GetPDFFiles();
+            parser.GetPDFFiles();
+
         }
     }
 }

@@ -214,12 +214,13 @@
             // cvDirectoryTextbox
             // 
             this.cvDirectoryTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cvDirectoryTextbox.Enabled = false;
             this.cvDirectoryTextbox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.cvDirectoryTextbox.Location = new System.Drawing.Point(38, 428);
             this.cvDirectoryTextbox.Name = "cvDirectoryTextbox";
             this.cvDirectoryTextbox.Size = new System.Drawing.Size(244, 16);
             this.cvDirectoryTextbox.TabIndex = 16;
-            this.cvDirectoryTextbox.Text = "Input CV Directory";
+            this.cvDirectoryTextbox.Text = "Browse CV Directory";
             // 
             // BrowseButton
             // 

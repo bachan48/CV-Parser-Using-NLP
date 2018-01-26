@@ -31,5 +31,16 @@ namespace CV_Parser_using_NLP.Dependency
             cmd.WaitForExit();
             return true;
         }
+
+        public static bool InstallPyLibrary(string filePath)
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            cmd.StartInfo.Arguments = @"/c py "+filePath;
+            cmd.Start();
+            cmd.WaitForExit();
+            return true;
+        }
     }
 }
