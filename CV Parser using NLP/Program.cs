@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CV_Parser_using_NLP.Engine;
 using System.Windows.Forms;
+
 
 namespace CV_Parser_using_NLP
 {
@@ -20,7 +22,7 @@ namespace CV_Parser_using_NLP
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Helper.InitializeTrainingData();                
+                Parser.InitializeTrainingData();                
                 Application.Run(new CVForm());                
             }
             catch(Exception ex)
