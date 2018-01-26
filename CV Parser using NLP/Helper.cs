@@ -34,7 +34,7 @@ namespace CV_Parser_using_NLP
             }
         }
         
-        public static bool AddDataFromResource(List<Object> Dictionary, string file)
+        public static bool AddDataFromResource(List<string> Dictionary, string file)
         {
             try
             {
@@ -44,9 +44,12 @@ namespace CV_Parser_using_NLP
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    string names = reader.ReadToEnd();
-
-                    List<string> result = names.Split(new char[] { '\n' }).ToList();
+                    string retrivedNames = reader.ReadToEnd();
+                    string names = retrivedNames.ToUpper();
+                    string[] result = names.Split(
+                        new[] { "\r\n", "\r", "\n" }, 
+                        StringSplitOptions.None
+                    );                    
                     foreach (var data in result)
                     {
                         Dictionary.Add(data);
@@ -61,14 +64,38 @@ namespace CV_Parser_using_NLP
             }
         }
 
-        public static void GetPDFFilesPython(string directory)
+        public static Dictionary<string, List<string>> GetPDFFilesData(string directory)
         {
+            Dictionary<string, List<string>> EntireCVData = new Dictionary<string, List<string>>();
+
             Process cmd = new Process();
             cmd.StartInfo.FileName = "cmd.exe";
             cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            cmd.StartInfo.Arguments = @"/c py C:\Windows\Temp\pdf_to_textfile.py " + directory;
+           
+            cmd.StartInfo.Arguments = @"/c py C:\Windows\Temp\pdf_to_textfile.py " + "\""+directory+"\"";
             cmd.Start();
             cmd.WaitForExit();
+
+            var txtFiles = Directory.EnumerateFiles(@"C:\Windows\Temp\temp", "*.txt");
+            foreach (string currentFile in txtFiles)
+            {
+                List<string> CVDataList = new List<string>();
+                Console.WriteLine(currentFile);
+                using (StreamReader streamReader = new StreamReader(currentFile))
+                {
+                    string retrivedItems = streamReader.ReadToEnd();
+                    string items = retrivedItems.ToUpper();
+                    List<string> result = items.Split(new char[] { ',' }).ToList();
+                    foreach (var data in result)
+                    {
+                        CVDataList.Add(data);
+                        Console.Write(data);
+                    }
+                }
+                Console.WriteLine("");
+                EntireCVData.Add(currentFile, CVDataList);
+            }
+            return EntireCVData;
         }
 
         public static bool CheckForInternetConnection()

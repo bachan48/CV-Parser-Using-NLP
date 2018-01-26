@@ -35,31 +35,31 @@ namespace CV_Parser_using_NLP
 
             if (skills != "" && education != "" && experience != "")
             {
-                Parser.InitializeRequirementData(skills, education, experience);                
-            }
-            else Helper.ShowError("All fields are required.");
-
-            if (Directory.Exists(directory)) {
-
-                DirectoryInfo dir = new DirectoryInfo(directory);
-                FileInfo[] PDFFiles = dir.GetFiles("*.pdf");
-                
-                if (!(PDFFiles.Length == 0))
-                { 
-
-
-                                    /*****************/
-                    /************/CVParserUsingNLP();/*************/
-                                    /*****************/
-
-
-                }
-                if (PDFFiles.Length == 0)
+                if (Directory.Exists(directory))
                 {
-                    Helper.ShowError("No CVs found in the directory. Please make sure all CVs are in .PDF format ");
-                }  
+
+                    DirectoryInfo dir = new DirectoryInfo(directory);
+                    FileInfo[] PDFFiles = dir.GetFiles("*.pdf");
+
+                    if (!(PDFFiles.Length == 0))
+                    {
+
+
+                                        /*****************/
+                        /************/CVParserUsingNLP();/*************/
+                                      /*****************/
+
+
+                    }
+                    if (PDFFiles.Length == 0)
+                    {
+                        Helper.ShowError("No CVs found in the directory. Please make sure all CVs are in .PDF format ");
+                    }
+                }
+                else Helper.ShowError("Directory doesn't exist.");
+                                
             }
-            else Helper.ShowError("Directory doesn't exist.");
+            else Helper.ShowError("All fields are required.");           
         }
 
         private void BrowseButton_Click(object sender, EventArgs e)
@@ -81,8 +81,14 @@ namespace CV_Parser_using_NLP
 
         private void CVParserUsingNLP()
         {
-            parser.GetPDFFiles();
+            //INITIALIZE REQUIREMENT DATA FROM UI
+            parser.InitializeRequirementData(skillsTextbox.Text, educationQualificationTextbox.Text, experienceTextBox.Text);
 
+            //GET ALL CV DATA AS DICTIONARY(FILENAME: CONTENT)
+            Dictionary<string, List<string>> EntireCVData = parser.GetPDFFilesData();
+
+            //CALL CV CONTENT INITIALIZER WHICH RETURNS QUEUE OF CVDATA INSTANCES
+            Queue<CVData> cvData = parser.InitializeCVData(EntireCVData);
         }
     }
 }

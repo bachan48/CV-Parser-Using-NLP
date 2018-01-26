@@ -41,9 +41,9 @@ namespace CV_Parser_using_NLP.Dependency
                     byte[] file2 = ResourceHelper.GetEmbeddedResourceAsBytes(resourceName2);
                     File.WriteAllBytes(@"C:\Windows\Temp\pdf_to_textfile.py", file2);
 
-                    Library.InstallGemAnemone("anemone");
-                    Library.InstallLibraryNLTK("NLTK");
-                    Library.InstallPyLibrary(@"C:\Windows\Temp\InstallPyLibrary.py");
+                    //Library.InstallGemAnemone("anemone");
+                    //Library.InstallLibraryNLTK("NLTK");
+                    //Library.InstallPyLibrary(@"C:\Windows\Temp\InstallPyLibrary.py");
 
                     Helper.ShowInformation("Thank you for your patience, we're good to go!");
                     return true;

@@ -17,14 +17,18 @@ namespace CV_Parser_using_NLP.Data
         public List<string> EducationDictionary { get; set; }
             = new List<string>();
 
+        public string Name { get; set; }
 
         public CVData(List<string> SkillDictionary,
             List<string> ExperienceDictionary,
-            List<string> EducationDictionary)
+            List<string> EducationDictionary,
+            string Name)
         {
             this.SkillDictionary = SkillDictionary;
             this.ExperienceDictionary = ExperienceDictionary;
             this.EducationDictionary = EducationDictionary;
+            this.Name = Name;
         }
+
     }
 }

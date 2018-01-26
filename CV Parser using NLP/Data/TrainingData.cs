@@ -8,19 +8,19 @@ namespace CV_Parser_using_NLP.Data
 {
     class TrainingData
     {
-        public List<Object> SkillDictionary { get; set; }
-            = new List<Object>();
+        public List<string> SkillDictionary { get; set; }
+            = new List<string>();
 
-        public List<Object> ExperienceDictionary { get; set; }
-            = new List<Object>();
+        public List<string> ExperienceDictionary { get; set; }
+            = new List<string>();
 
-        public List<Object> EducationDictionary { get; set; }
-            = new List<Object>();
+        public List<string> EducationDictionary { get; set; }
+            = new List<string>();
 
 
-        public TrainingData(List<Object> SkillDictionary, 
-            List<Object> ExperienceDictionary,
-            List<Object> EducationDictionary)
+        public TrainingData(List<string> SkillDictionary, 
+            List<string> ExperienceDictionary,
+            List<string> EducationDictionary)
         {
             this.SkillDictionary = SkillDictionary;
             this.ExperienceDictionary = ExperienceDictionary;
