@@ -55,7 +55,6 @@
     <Compile Include="Data\RequirementData.cs" />
     <Compile Include="Dependency\Library.cs" />
     <Compile Include="Dependency\Software.cs" />
-    <Compile Include="Engine\CV.cs" />
     <Compile Include="Engine\Parser.cs" />
     <Compile Include="Data\TrainingData.cs" />
     <Compile Include="Helper.cs" />
