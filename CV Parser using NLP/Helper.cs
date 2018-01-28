@@ -165,6 +165,20 @@ namespace CV_Parser_using_NLP
             formPanel.BackColor = Color.WhiteSmoke;
         }
 
+        public static void DeleteTempFiles()
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\Windows\Temp\temp");
+
+            foreach (FileInfo file in directory.GetFiles())
+            {
+                file.Delete();
+            }            
+            FileInfo file1 = new FileInfo(@"C:\Windows\Temp\InstallPyLibrary.py");
+            FileInfo file2 = new FileInfo(@"C:\Windows\Temp\pdf_to_textfile.py");
+            file1.Delete();
+            file2.Delete();
+        }
+
         public static void ShowError(string message) {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

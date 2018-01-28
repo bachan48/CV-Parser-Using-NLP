@@ -132,6 +132,10 @@ namespace CV_Parser_using_NLP
             {
                 Helper.ShowError("None of the CVs could be parsed. Please try valid set of CVs.");
             }
+
+            //DELETING ALL TEMP FILES CREATED
+            Helper.DeleteTempFiles();
+
         }
     }
 }
