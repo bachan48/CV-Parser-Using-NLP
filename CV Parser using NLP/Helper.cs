@@ -172,11 +172,8 @@ namespace CV_Parser_using_NLP
             foreach (FileInfo file in directory.GetFiles())
             {
                 file.Delete();
-            }            
-            FileInfo file1 = new FileInfo(@"C:\Windows\Temp\InstallPyLibrary.py");
-            FileInfo file2 = new FileInfo(@"C:\Windows\Temp\pdf_to_textfile.py");
-            file1.Delete();
-            file2.Delete();
+            }           
+            
         }
 
         public static void ShowError(string message) {
