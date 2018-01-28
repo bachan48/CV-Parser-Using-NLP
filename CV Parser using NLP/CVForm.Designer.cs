@@ -47,12 +47,12 @@
             this.BrowseButton = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
             this.CVTable = new System.Windows.Forms.DataGridView();
+            this.cvRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cvTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormPanel = new System.Windows.Forms.Panel();
             this.LoadingPanel = new System.Windows.Forms.Panel();
             this.WaitLabel = new System.Windows.Forms.Label();
             this.InitProgressBar = new System.Windows.Forms.ProgressBar();
-            this.cvRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cvTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CVTable)).BeginInit();
             this.FormPanel.SuspendLayout();
             this.LoadingPanel.SuspendLayout();
@@ -237,7 +237,7 @@
             this.cvDirectoryTextbox.Name = "cvDirectoryTextbox";
             this.cvDirectoryTextbox.Size = new System.Drawing.Size(488, 31);
             this.cvDirectoryTextbox.TabIndex = 16;
-            this.cvDirectoryTextbox.Text = "Browse CV Directory";
+            this.cvDirectoryTextbox.Text = "Except: Root Directory(Eg: C:\\)";
             // 
             // BrowseButton
             // 
@@ -287,6 +287,19 @@
             this.CVTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CVTable.Size = new System.Drawing.Size(456, 617);
             this.CVTable.TabIndex = 19;
+            // 
+            // cvRank
+            // 
+            this.cvRank.HeaderText = "Rank";
+            this.cvRank.Name = "cvRank";
+            this.cvRank.Width = 50;
+            // 
+            // cvTitle
+            // 
+            this.cvTitle.HeaderText = "CV File Name";
+            this.cvTitle.Name = "cvTitle";
+            this.cvTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.cvTitle.Width = 175;
             // 
             // FormPanel
             // 
@@ -350,19 +363,6 @@
             this.InitProgressBar.TabIndex = 20;
             this.InitProgressBar.UseWaitCursor = true;
             this.InitProgressBar.Value = 10;
-            // 
-            // cvRank
-            // 
-            this.cvRank.HeaderText = "Rank";
-            this.cvRank.Name = "cvRank";
-            this.cvRank.Width = 50;
-            // 
-            // cvTitle
-            // 
-            this.cvTitle.HeaderText = "CV File Name";
-            this.cvTitle.Name = "cvTitle";
-            this.cvTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.cvTitle.Width = 175;
             // 
             // CVForm
             // 
