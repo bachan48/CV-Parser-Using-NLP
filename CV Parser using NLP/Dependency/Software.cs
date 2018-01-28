@@ -12,7 +12,13 @@ namespace CV_Parser_using_NLP.Dependency
         public static bool InitializeDependencies()
         {            
             bool isPythonInstalled = Software.CheckSoftwareInstalled("Python");
-            bool isRubyInstalled = Software.CheckSoftwareInstalled("Ruby");           
+
+            //Ruby installation set to true for now. 
+            //The only time ruby is required is when update data in Form is true.
+            //Update data set to false by default.
+            //Feel free to contribute on update data.
+
+            bool isRubyInstalled = true;//Software.CheckSoftwareInstalled("Ruby");           
 
             if (!isPythonInstalled)
             {

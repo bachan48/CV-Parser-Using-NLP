@@ -12,6 +12,7 @@ namespace CV_Parser_using_NLP
     {
         string directory;
         Parser parser;
+        //Update data set to false as of now. Feel free to contribute, make training data update.
         bool updateData = false;
         public CVForm()
         {
