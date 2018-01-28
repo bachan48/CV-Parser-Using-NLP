@@ -44,7 +44,10 @@ namespace CV_Parser_using_NLP.Dependency
                     byte[] file2 = ResourceHelper.GetEmbeddedResourceAsBytes(resourceName2);
                     File.WriteAllBytes(@"C:\Windows\Temp\pdf_to_textfile.py", file2);
 
-                    Library.InstallGemAnemone("anemone");
+                    //Install Anemone only when check ruby installation is done.
+                    //Feel free to contribute.
+
+                    //Library.InstallGemAnemone("anemone");
                     Library.InstallLibraryNLTK("NLTK");
                     Library.InstallPyLibrary(@"C:\Windows\Temp\InstallPyLibrary.py");
 
